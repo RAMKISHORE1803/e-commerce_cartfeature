@@ -11,9 +11,61 @@ function Dashboard() {
   }
 
   return (
-    <p>
-      {searchQuery}
-    </p>
+    <div>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+      <p>{searchQuery}</p>
+
+    </div>
   );
 }
 

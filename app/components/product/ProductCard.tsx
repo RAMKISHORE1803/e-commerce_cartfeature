@@ -1,5 +1,3 @@
-// src/components/products/ProductCard.tsx
-
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,7 +10,7 @@ type ProductCardProps = {
 
 const ProductCard = ({ id, name, price, imageUrl }: ProductCardProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+    <div className="rounded-lg shadow-sm overflow-hidden s">
       <Link href={`/products/${id}`}>
         <div className="relative w-full h-64">
           <Image

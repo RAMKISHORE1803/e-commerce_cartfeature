@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 :root {
-    --navbar-height: 4rem; /* Adjust this value based on your navbar height */
+    --navbar-height: 5rem; /* Adjust this value based on your navbar height */
   }

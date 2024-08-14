@@ -31,8 +31,8 @@ const ProductCard = ({ id, name, dimensions, price, reviews, images }: ProductCa
         </h3>
         <p className="text-gray-600 mt-2">{dimensions}</p>
         <span>({reviews})</span>
-        <p className="text-gray-600 mt-2">${price.toFixed(2)}</p>
-        <Image src={addtocart} alt='addtocart-icon'/>
+        <p className="text-gray-600 mt-2 mb-2">${price.toFixed(2)}</p>
+        <Image className='cursor-pointer' src={addtocart} alt='addtocart-icon'/>
         
       </div>
     </div>

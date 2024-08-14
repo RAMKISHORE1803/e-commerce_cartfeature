@@ -1,20 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import addtocart from '../icons/addtocart.svg';
 
 type ProductCardProps = {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
+    id: number;
+    name: string;
+    dimensions: string;
+    price: number;
+    reviews: number;
+    images: string[];
 };
 
-const ProductCard = ({ id, name, price, imageUrl }: ProductCardProps) => {
+const ProductCard = ({ id, name, dimensions, price, reviews, images }: ProductCardProps) => {
   return (
-    <div className="rounded-lg shadow-sm overflow-hidden s">
+    <div className="rounded-lg shadow-sm overflow-hidden">
       <Link href={`/products/${id}`}>
         <div className="relative w-full h-64">
           <Image
-            src={imageUrl}
+            src={images[0]}
             alt={name}
             layout="fill"
             objectFit="cover"
@@ -23,11 +26,14 @@ const ProductCard = ({ id, name, price, imageUrl }: ProductCardProps) => {
         </div>
       </Link>
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
+        <h3 className="text-lg font-semibold text-gray-900">
+          {name} 
+        </h3>
+        <p className="text-gray-600 mt-2">{dimensions}</p>
+        <span>({reviews})</span>
         <p className="text-gray-600 mt-2">${price.toFixed(2)}</p>
-        <button className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
-          Add to Cart
-        </button>
+        <Image src={addtocart} alt='addtocart-icon'/>
+        
       </div>
     </div>
   );

@@ -6,8 +6,8 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="What are you looking for?"
-        className="bg-gray-200 rounded-full focus:outline-none hover:bg-gray-300 px-20 py-3"
-        style={{ color: 'black' }} // Add inline style
+        className="bg-lightGrey rounded-full focus:outline-none hover:bg-darkGrey px-20 py-3"
+        style={{ color: 'black' }}
       />
     </div>
   );

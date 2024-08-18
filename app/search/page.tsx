@@ -9,25 +9,32 @@ function Dashboard() {
   const query = searchParams.get("q");
   const { products, loading, error } = useFetchProducts();
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error loading products.</div>;
+
   return (
     <div className="px-20">
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              dimensions={product.dimensions}
-              reviews={product.reviews}
-              price={product.price}
-              images={product.images}
-            />
-          ))}
-        </div>
-      </Suspense>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            dimensions={product.dimensions}
+            reviews={product.reviews}
+            price={product.price}
+            images={product.images}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-export default Dashboard;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading products...</div>}>
+      <Dashboard />
+    </Suspense>
+  );
+}

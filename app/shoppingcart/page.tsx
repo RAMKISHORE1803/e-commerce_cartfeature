@@ -38,7 +38,7 @@ export default function CartPage() {
               Your shopping bag is empty
             </h1>
             <p className="text-gray-600 mb-6">
-              Looks like you haven't added any items to your shopping bag yet.
+              Looks like you have not added any items to your shopping bag yet.
             </p>
             <Link className="bg-black text-white rounded-xl p-6 text-center" href={'/search?q=2'}>Go back to shopping</Link>
           </div>

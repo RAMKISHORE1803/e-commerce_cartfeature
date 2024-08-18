@@ -10,43 +10,64 @@ import cart from "../icons/cart.svg";
 
 const Navbar = () => {
   return (
-    <nav className="text-black p-4 md:p-6 h-[var(--navbar-height)] shadow-md flex flex-col md:flex-row md:items-center md:justify-between">
-      <div className="flex items-center justify-between w-full">
-        <Link href="/" className="text-xl font-bold flex items-center gap-2">
-          <Image src={ikea} alt="ikea-icon" width={50} height={50} />
-        </Link>
-
-        {/* Mobile Icons */}
-        <div className="md:hidden flex gap-4 items-center">
-          <Image src={truck} alt="truck-icon" width={24} height={24} />
-          <Image src={store} alt="store-icon" width={24} height={24} />
-          <Image src={profile} alt="profile-icon" width={24} height={24} />
+    <nav className="text-black p-6 mw-[100vw] h-[var(--navbar-height)] shadow-md flex-col md:flex lg:flex">
+      {/* For mobile */}
+      <div className="flex-col justify-between md:hidden lg:hidden">
+        <div className="flex justify-between">
+          <Link href="/" className="text-xl font-bold">
+            <Image src={ikea} alt="ikea-icon" />
+          </Link>
+          <div className="flex gap-5 text-sm items-center mb-6">
+            <div className="mr-4 flex gap-2 cursor-pointer">
+              <Image src={profile} alt="profile-icon" />
+            </div>
+            <div>
+              <Image src={heart} alt="heart-icon" />
+            </div>
+            <Link href={"/shoppingcart"}>
+              <Image src={cart} alt="cart-icon" />
+            </Link>
+          </div>
+        </div>
+        <div className="mb-4">
+          <SearchBar />
         </div>
       </div>
-
-      <div className="hidden md:flex flex-grow justify-center mt-4 md:mt-0">
-        <SearchBar />
-      </div>
-
-      <div className="flex gap-4 items-center mt-4 md:mt-0">
-        <div className="hidden md:flex gap-2 items-center cursor-pointer">
-          <Image src={truck} alt="truck-icon" width={24} height={24} />
+      <div className="flex justify-between">
+        <div className="flex gap-2 cursor-pointer">
+          <Image src={truck} alt="truck-icon" />
           <span>Enter postal code</span>
         </div>
-        <div className="hidden md:flex gap-2 items-center mr-4">
-          <Image src={store} alt="store-icon" width={24} height={24} />
+        <div className="mr-4 flex gap-2">
+          <Image src={store} alt="store-icon" />
           <span>Select store</span>
         </div>
+      </div>
 
+      {/* For desktop */}
+      <div className="hidden md:flex lg:flex max-w-full mx-auto justify-between items-center">
+        <Link href="/" className="text-xl font-bold">
+          <Image src={ikea} alt="ikea-icon" />
+        </Link>
+        <SearchBar />
         <div className="flex gap-5 text-sm">
-          <div className="hidden md:flex gap-2 cursor-pointer">
-            <Image src={profile} alt="profile-icon" width={24} height={24} />
+          <div className="flex gap-2 cursor-pointer">
+            <Image src={truck} alt="truck-icon" />
+            <span>Enter postal code</span>
+          </div>
+          <div className="mr-4 flex gap-2">
+            <Image src={store} alt="store-icon" />
+            <span>Select store</span>
+          </div>
+          <div className="mr-4 flex gap-2 cursor-pointer">
+            <Image src={profile} alt="profile-icon" />
+            <span>Hej! Log in</span>
           </div>
           <div>
-            <Image src={heart} alt="heart-icon" width={24} height={24} />
+            <Image src={heart} alt="heart-icon" />
           </div>
           <Link href={"/shoppingcart"}>
-            <Image src={cart} alt="cart-icon" width={24} height={24} />
+            <Image src={cart} alt="cart-icon" />
           </Link>
         </div>
       </div>

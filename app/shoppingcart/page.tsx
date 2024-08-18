@@ -40,7 +40,7 @@ export default function CartPage() {
             <p className="text-gray-600 mb-6">
               Looks like you have not added any items to your shopping bag yet.
             </p>
-            <Link className="bg-black text-white rounded-xl p-6 text-center" href={'/search?q=2'}>Go back to shopping</Link>
+            <Link className="bg-black text-white rounded-xl p-6 text-center" href={'/'}>Go back to shopping</Link>
           </div>
           <div className="w-[50vw]">
           <Image src={emptybag} alt="Empty shopping bag" />

@@ -44,8 +44,8 @@ const ProductCard = ({
   }, [cart]);
 
   return (
-    <div className="rounded-lg shadow-sm overflow-hidden">
-      <div className="relative w-full h-64">
+    <div className="rounded-lg shadow-sm overflow-hidden w-[100vw] px-4">
+      <div className="relative w-full h-44">
         <Image
           src={images[0]}
           alt={name}
@@ -58,7 +58,7 @@ const ProductCard = ({
         <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
         <p className="text-gray-600 mt-2">{dimensions}</p>
         <span>({reviews})</span>
-        <p className="text-gray-600 mt-2 mb-8">${price.toFixed(2)}</p>
+        <p className="text-gray-600 mt-2 mb-2 md:mb-6 lg:mb-8">${price.toFixed(2)}</p>
         <Image
           className="cursor-pointer"
           src={addtocart}

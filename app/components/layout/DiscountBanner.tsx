@@ -7,7 +7,7 @@ export default function DiscountBanner() {
   const messages = [
     "Our favourite products at new lower prices! Shop now.",
     "Download the IKEA app!",
-    "Get 10% instant discount* on American Express® Cards. *T&C apply."
+    "Get 10% instant discount* on American Express® Cards."
   ];
 
   useEffect(() => {

@@ -1,9 +1,8 @@
-"use client";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/features/cart/cartSlice";
 import { RootState } from "../../redux/store";
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useToast } from "../ui/use-toast";
 import addtocart from "../icons/addtocart.svg";
 
@@ -38,14 +37,10 @@ export default function ProductCard({
     });
   }, [dispatch, id, name, price, dimensions, images, toast]);
 
-  useEffect(() => {
-    console.log("Cart items after adding:", cart);
-  }, [cart]);
-
   return (
-    <div className="rounded-lg shadow-sm overflow-hidden w-[90vw] sm:w-full">
+    <div className="overflow-hidden w-[90vw] sm:w-full">
       <div
-        className="relative w-full h-64"
+        className="relative w-full h-80 aspect-w-16 aspect-h-9"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -53,8 +48,8 @@ export default function ProductCard({
           src={hovered && images[1] ? images[1] : images[0]}
           alt={name}
           layout="fill"
-          objectFit="cover"
-          className="hover:scale-105 transition-transform duration-200"
+          objectFit="cover" // Try "contain" if needed
+          className="transition-transform duration-200"
         />
       </div>
       <div className="p-4">

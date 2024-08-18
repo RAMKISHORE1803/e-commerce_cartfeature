@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import ikea from "../icons/ikea.svg";
@@ -6,9 +7,19 @@ import truck from "../icons/truck.svg";
 import store from "../icons/store.svg";
 import profile from "../icons/profile.svg";
 import heart from "../icons/heart.svg";
-import cart from "../icons/cart.svg";
+import cartIcon from "../icons/cart.svg";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const cart = useSelector((state: RootState) => state.cart.items);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setCount(totalItems);
+  }, [cart]);
+
   return (
     <nav className="text-black p-6 w-[100vw] min-w-[100vw] max-w-[100vw] h-[var(--navbar-height)] shadow-md flex-col md:flex lg:flex">
       {/* For mobile */}
@@ -25,7 +36,12 @@ const Navbar = () => {
               <Image src={heart} alt="heart-icon" />
             </div>
             <Link href={"/shoppingcart"}>
-              <Image src={cart} alt="cart-icon" />
+              <Image src={cartIcon} alt="cart-icon" />
+              {cart.length > 0 && (
+                <span className="absolute top-16 right-5 bg-themeBlue text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                  {count}
+                </span>
+              )}
             </Link>
           </div>
         </div>
@@ -69,7 +85,7 @@ const Navbar = () => {
             <Image src={heart} alt="heart-icon" />
           </div>
           <Link href={"/shoppingcart"}>
-            <Image src={cart} alt="cart-icon" />
+            <Image src={cartIcon} alt="cart-icon" />
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import CartItemCard from "../components/product/CartItemCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image"; // Import Image component from next/image
 import emptybag from "../components/images/emptybag.png";
 import Link from "next/link";
@@ -22,28 +22,37 @@ export default function CartPage() {
   };
 
   const handleApplyDiscount = () => {
-    // Handle discount application logic here
     console.log("Discount code applied:", discountCode);
-    // You might also want to reset the discount code or hide the input box after applying
     setDiscountCode("");
     setShowDiscount(false);
   };
 
   return (
-    <div className="p-10 flex flex-col lg:flex-row">
+    <div className="p-10 flex flex-col lg:flex-row w-full">
       {cart.length === 0 ? (
-        <div className="flex">
-          <div className="flex flex-col justify-center w-1/2">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center w-full">
+          <div className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left">
             <h1 className="font-extrabold text-4xl mb-8">
               Your shopping bag is empty
             </h1>
             <p className="text-gray-600 mb-6">
               Looks like you have not added any items to your shopping bag yet.
             </p>
-            <Link className="bg-black text-white rounded-xl p-6 text-center" href={'/'}>Go back to shopping</Link>
+            <Link
+              className="bg-black text-white rounded-xl p-6 text-center"
+              href={"/"}
+            >
+              Go back to shopping
+            </Link>
           </div>
-          <div className="w-[50vw]">
-          <Image src={emptybag} alt="Empty shopping bag" />
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <Image
+              src={emptybag}
+              alt="Empty shopping bag"
+              width={500}
+              height={500}
+              className="object-contain"
+            />
           </div>
         </div>
       ) : (

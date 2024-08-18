@@ -22,6 +22,7 @@ const config = {
       colors:{
         lightGrey: '#f5f5f5',
         darkGrey: '#dededf',
+        themeBlue: '#0058a2',
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

@@ -72,7 +72,7 @@ export default function CartPage() {
             ))}
           </div>
 
-          <div className="w-full lg:w-2/5 p-6 bg-white shadow-md rounded-lg mt-8 lg:mt-0">
+          <div className="w-full lg:w-2/5 p-6 bg-white rounded-lg mt-8 lg:mt-0">
             <h1 className="font-extrabold text-2xl mb-8 text-gray-900">
               Order Summary
             </h1>
@@ -112,7 +112,7 @@ export default function CartPage() {
               )}
             </div>
 
-            <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+            <button className="w-full h-28 py-3 bg-themeBlue text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
               Continue to Checkout
             </button>
           </div>

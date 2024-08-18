@@ -86,6 +86,11 @@ const Navbar = () => {
           </div>
           <Link href={"/shoppingcart"}>
             <Image src={cartIcon} alt="cart-icon" />
+            {cart.length > 0 && (
+              <span className="absolute top-[4.5rem] right-11 bg-themeBlue text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                {count}
+              </span>
+            )}
           </Link>
         </div>
       </div>

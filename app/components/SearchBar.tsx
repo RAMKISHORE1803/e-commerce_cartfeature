@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SearchBar() {
   return (
-    <div className="flex items-center max-w-[100vw] sm: w-[80vw]">
+    <div className="flex items-center max-w-full">
       <input
         type="text"
         placeholder="What are you looking for?"

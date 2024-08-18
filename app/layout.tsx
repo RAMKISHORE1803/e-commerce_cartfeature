@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import DiscountBanner from "./components/layout/DiscountBanner";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "./components/ui/toaster";
 
 const fontSans = FontSans({
   subsets: ["latin"],

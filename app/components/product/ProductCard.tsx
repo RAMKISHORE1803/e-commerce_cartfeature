@@ -4,7 +4,7 @@ import { addItem } from "../../redux/features/cart/cartSlice";
 import { RootState } from "../../redux/store";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "../ui/use-toast";
 import addtocart from "../icons/addtocart.svg";
 
 type ProductCardProps = {

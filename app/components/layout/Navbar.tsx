@@ -19,7 +19,7 @@ const Navbar = () => {
           <div className="mr-4 flex gap-2"><Image src={store} alt='store-icon'/><span>Select store</span></div>
           <div className="mr-4 flex gap-2 cursor-pointer"><Image src={profile} alt='profile-icon'/><span>Hej! Log in</span></div>
           <div><Image src={heart} alt='heart-icon'/></div>
-          <Link href={"/cart"}><Image src={cart} alt='cart-icon'/></Link>
+          <Link href={"/shoppingcart"}><Image src={cart} alt='cart-icon'/></Link>
         </div>
       </div>
     </nav>

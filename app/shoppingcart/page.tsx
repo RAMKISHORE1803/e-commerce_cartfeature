@@ -5,6 +5,8 @@ import CartItemCard from "../components/product/CartItemCard";
 import { useState } from "react";
 import Image from "next/image";
 import emptybag from "../components/images/emptybag.png";
+import discounttag from "../components/icons/discount-tag.svg";
+import dropdown from "../components/icons/dropdown.svg";
 import Link from "next/link";
 import useFetchDiscountCodes from "../hooks/useFetchDiscountCodes";
 
@@ -43,7 +45,9 @@ export default function CartPage() {
     if (foundDiscount) {
       setAppliedDiscount(foundDiscount.discount);
       setAppliedCode(code);
-      setDiscountMessage(`Success! ${foundDiscount.discount}% discount applied.`);
+      setDiscountMessage(
+        `Success! ${foundDiscount.discount}% discount applied.`
+      );
     } else {
       setDiscountMessage("Invalid discount code.");
     }
@@ -140,31 +144,33 @@ export default function CartPage() {
                   <>
                     <button
                       onClick={handleToggleDiscount}
-                      className="text-blue-600 font-medium hover:underline focus:outline-none"
+                      className="font-bold text-sm flex items-center justify-between w-full"
                     >
-                      {showDiscount
-                        ? "Hide Discount Code"
-                        : "Apply Discount Code"}
+                      <div className="flex gap-2">
+                        <Image src={discounttag} alt="discount-icon" />
+                        <p>Apply Discount Code</p>
+                      </div>
+                      <Image src={dropdown} alt="dropdown-icon" />
                     </button>
                     {showDiscount && (
                       <div className="mt-4">
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 justify-between mt-8">
                           <input
                             type="text"
                             value={discountCode}
                             onChange={(e) => setDiscountCode(e.target.value)}
                             placeholder="Enter discount code"
-                            className="border border-gray-300 rounded-l-md px-3 py-2 w-full"
+                            className="border border-gray-300 rounded-l-md px-3 py-2 w-3/4"
                           />
                           <button
                             onClick={() => handleApplyDiscount(discountCode)}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors duration-300"
+                            className="text-black border-2 border-black px-6 py-2 rounded-full hover:bg-black hover:text-white transition-colors duration-300"
                           >
                             Apply
                           </button>
                         </div>
                         <div>
-                          <h2 className="text-lg font-semibold mb-2">
+                          <h2 className="text-lg font-semibold mb-2 mt-4">
                             Available Discount Codes:
                           </h2>
                           <div className="flex flex-wrap gap-2">

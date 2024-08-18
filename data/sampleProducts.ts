@@ -20,7 +20,7 @@ export const sampleProducts = [
       "reviews": 250,
       "images": [
         "https://www.ikea.com/in/en/images/products/jaettebjoern-organiser-white-grey__1240405_pe919364_s5.jpg?f=xl",
-        "https://www.ikea.com/in/en/p/foersaesong-cable-management-tray-white-80573189/"
+        "https://www.ikea.com/in/en/images/products/uppdatera-box-white__1215002_pe911804_s5.jpg?f=xxs"
       ]
     },
     {

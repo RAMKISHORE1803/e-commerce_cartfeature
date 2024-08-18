@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/features/cart/cartSlice";
 import { RootState } from "../../redux/store";
 import Image from "next/image";
-import Link from "next/link";
-import addtocart from "../icons/addtocart.svg";
-import { useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import addtocart from "../icons/addtocart.svg";
 
 type ProductCardProps = {
   id: number;
@@ -17,27 +16,27 @@ type ProductCardProps = {
   images: string[];
 };
 
-const ProductCard = ({
+export default function ProductCard({
   id,
   name,
   dimensions,
   price,
   reviews,
   images,
-}: ProductCardProps) => {
+}: ProductCardProps) {
   const dispatch = useDispatch();
+  const { toast } = useToast();
   const cart = useSelector((state: RootState) => state.cart.items);
 
-  const { toast } = useToast();
+  const [hovered, setHovered] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     const product = { id, name, price, quantity: 1, dimensions, images };
     dispatch(addItem(product));
-    //console.log("Cart items after adding:", cart);
     toast({
       title: `${name} added to your shopping cart`,
     });
-  };
+  }, [dispatch, id, name, price, dimensions, images, toast]);
 
   useEffect(() => {
     console.log("Cart items after adding:", cart);
@@ -45,9 +44,13 @@ const ProductCard = ({
 
   return (
     <div className="rounded-lg shadow-sm overflow-hidden w-[90vw] sm:w-full">
-      <div className="relative w-full h-64">
+      <div
+        className="relative w-full h-64"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         <Image
-          src={images[0]}
+          src={hovered && images[1] ? images[1] : images[0]}
           alt={name}
           layout="fill"
           objectFit="cover"
@@ -68,6 +71,4 @@ const ProductCard = ({
       </div>
     </div>
   );
-};
-
-export default ProductCard;
+}

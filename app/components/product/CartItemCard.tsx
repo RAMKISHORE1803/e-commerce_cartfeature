@@ -12,7 +12,7 @@ type CartItemCardProps = {
   dimensions: string;
   price: number;
   quantity: number;
-  images: string[]; // Ensure images is part of the props
+  images: string[]; 
 };
 
 const CartItemCard = ({
@@ -62,17 +62,17 @@ const CartItemCard = ({
         <p className="text-gray-600 mt-1 text-sm">{dimensions}</p>
         <p className="text-gray-600 mt-1 text-sm mb-4">${price.toFixed(2)}</p>
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center rounded-l-md">
             <button
               onClick={handleDecrement}
-              className="px-2 py-1 text-white bg-gray-600 rounded-l-md"
+              className="px-2 py-1 text-white bg-black rounded-l-md"
             >
               -
             </button>
             <p className="text-gray-800 text-sm px-4">{quantity}</p>
             <button
               onClick={handleIncrement}
-              className="px-2 py-1 text-white bg-gray-600 rounded-r-md"
+              className="px-2 py-1 text-white bg-black rounded-r-md"
             >
               +
             </button>

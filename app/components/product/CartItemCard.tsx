@@ -77,7 +77,7 @@ const CartItemCard = ({
               +
             </button>
           </div>
-          <div><Image src={deleteicon} alt="delete icon" onClick={handleRemoveItem}/></div>
+          <div><Image src={deleteicon} alt="delete icon" className="cursor-pointer" onClick={handleRemoveItem}/></div>
         </div>
       </div>
     </div>

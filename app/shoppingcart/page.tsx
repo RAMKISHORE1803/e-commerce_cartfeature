@@ -9,6 +9,7 @@ import discounttag from "../components/icons/discount-tag.svg";
 import dropdown from "../components/icons/dropdown.svg";
 import Link from "next/link";
 import useFetchDiscountCodes from "../hooks/useFetchDiscountCodes";
+import Modal from "../components/Modal";
 
 export default function CartPage() {
   const cart = useSelector((state: RootState) => state.cart.items);
@@ -20,6 +21,8 @@ export default function CartPage() {
   const [discountMessage, setDiscountMessage] = useState<string | null>(null);
   const [appliedDiscount, setAppliedDiscount] = useState<number | null>(null);
   const [appliedCode, setAppliedCode] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [savedAmount, setSavedAmount] = useState<number | null>(null);
 
   const calculateTotalPrice = () => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -48,6 +51,10 @@ export default function CartPage() {
       setDiscountMessage(
         `Success! ${foundDiscount.discount}% discount applied.`
       );
+      const totalPrice = calculateTotalPrice();
+      const discountAmount = totalPrice * (foundDiscount.discount / 100);
+      setSavedAmount(discountAmount);
+      setShowModal(true);
     } else {
       setDiscountMessage("Invalid discount code.");
     }
@@ -64,6 +71,21 @@ export default function CartPage() {
 
   return (
     <div className="p-5 md:p-10 lg:p-10 flex flex-col lg:flex-row w-full">
+      {/* Modal */}
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <h2 className="text-2xl font-bold text-center mb-4">Hurray!</h2>
+        <p className="text-lg text-center mb-4">
+          You have saved <strong>${savedAmount?.toFixed(2)}</strong> with the discount code{" "}
+          <strong>{appliedCode}</strong>!
+        </p>
+        <button
+          onClick={() => setShowModal(false)}
+          className="block mx-auto px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+        >
+          Close
+        </button>
+      </Modal>
+
       {cart.length === 0 ? (
         <div className="flex flex-col-reverse lg:flex-row justify-between items-center w-full">
           <div className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left">
@@ -107,25 +129,28 @@ export default function CartPage() {
             ))}
           </div>
 
-          <div className="w-full lg:w-2/5 p-6 bg-white rounded-lg mt-8 lg:mt-0">
+          <div className="w-full lg:w-2/5 p-6 bg-white rounded-lg mt-8 lg:mt-0 shadow-md">
             <h1 className="font-extrabold text-2xl mb-8 text-gray-900">
               Order Summary
             </h1>
 
             <div className="flex items-center justify-between border-b border-gray-300 pb-4 mb-4">
               <span className="text-lg font-semibold text-gray-800">
-                Products:
+                Subtotal:
               </span>
               <span className="text-lg font-semibold text-gray-900">
-                ${calculateTotalPriceWithDiscount().toFixed(2)}
+                ${calculateTotalPrice().toFixed(2)}
               </span>
             </div>
 
             {appliedDiscount ? (
-              <div className="mb-6">
-                <p className="text-lg text-green-600">
-                  {appliedDiscount}% discount applied with code{" "}
+              <div className="mb-6 p-4 border border-green-300 rounded-lg bg-green-50">
+                <p className="text-lg text-green-800">
+                  <strong>{appliedDiscount}%</strong> discount applied with code{" "}
                   <strong>{appliedCode}</strong>.
+                </p>
+                <p className="text-sm text-green-700 mt-2">
+                  You saved <strong>${savedAmount?.toFixed(2)}</strong>!
                 </p>
                 <button
                   onClick={handleRemoveDiscount}
@@ -201,7 +226,16 @@ export default function CartPage() {
               </div>
             )}
 
-            <button className="w-full h-28 py-3 bg-themeBlue text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+            <div className="flex items-center justify-between border-t border-gray-300 pt-4 mt-4">
+              <span className="text-lg font-semibold text-gray-800">
+                Total:
+              </span>
+              <span className="text-lg font-semibold text-gray-900">
+                ${calculateTotalPriceWithDiscount().toFixed(2)}
+              </span>
+            </div>
+
+            <button className="w-full h-28 py-3 bg-themeBlue text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300 mt-4">
               Continue to Checkout
             </button>
           </div>
